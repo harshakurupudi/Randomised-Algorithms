@@ -181,10 +181,7 @@ def analyze_bucket_distribution(d: int, n: int, r: float, C: float):
             # Probability of empty bucket
             prob = (1 - q**actual_l)**n
         else:
-            # Binomial probability of exactly 'size' points in a bucket
-            # This is an approximation for illustration
             prob = (math.comb(n, size)) * (q**actual_l)**size * (1-q**actual_l)**(n-size)
-            # For numerical stability with large n
             from scipy.special import comb
             prob = comb(n, size) * (q**actual_l)**size * (1-q**actual_l)**(n-size)
         
